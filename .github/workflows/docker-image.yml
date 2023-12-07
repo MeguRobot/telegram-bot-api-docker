@@ -1,12 +1,10 @@
 name: Telegram Bot API Image
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
-  schedule:
-    - cron: '20 4 * * *'
-
 jobs:
   build:
     runs-on: ubuntu-latest
