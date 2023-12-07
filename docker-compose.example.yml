@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  telegram-bot-api:
+    container_name: telegram-bot-api
+    image: megurobot/telegram-bot-api:latest
+    environment:
+      # "Rootless" mode with multiple containers
+      GID: 101
+      UID: 101
+      # Telegram client data
+      TELEGRAM_API_ID: 123456
+      TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
+    volumes:
+      - telegram-bot-api-data:/var/lib/telegram-bot-api
+
+volumes:
+  telegram-bot-api:
+    name: telegram-bot-api
+    external: true
