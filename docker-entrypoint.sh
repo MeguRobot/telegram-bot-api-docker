@@ -4,6 +4,10 @@ set -e
 USERNAME=telegram-bot-api
 GROUPNAME=telegram-bot-api
 
+if [ -n "$1" ]; then
+  exec "$@"
+fi
+
 chown -R ${USERNAME}:${GROUPNAME} "${TELEGRAM_WORK_DIR}"
 
 DEFAULT_ARGS="--http-port 8081 --dir=${TELEGRAM_WORK_DIR} --temp-dir=${TELEGRAM_TEMP_DIR} --username=${USERNAME} --groupname=${GROUPNAME}"
