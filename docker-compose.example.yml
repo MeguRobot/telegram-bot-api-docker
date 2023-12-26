@@ -5,9 +5,9 @@ services:
     container_name: telegram-bot-api
     image: megurobot/telegram-bot-api:latest
     environment:
-      # "Rootless" mode with multiple containers
-      GID: 101
-      UID: 101
+      # "Rootless" mode with multiple containers or bind mount
+      USER_GID: 1001
+      USER_UID: 1001
       # Telegram client data
       TELEGRAM_API_ID: 123456
       TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
@@ -17,4 +17,4 @@ services:
 volumes:
   telegram-bot-api:
     name: telegram-bot-api
-    external: true
+    external: true # docker volume create --name telegram-bot-api --driver external
