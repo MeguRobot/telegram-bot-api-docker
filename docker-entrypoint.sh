@@ -26,7 +26,7 @@ if [ "$(id -g ${USERNAME})" -ne "${USER_GID}" ]; then
 fi
 
 mkdir -p ${TELEGRAM_WORK_DIR} ${TELEGRAM_TEMP_DIR}
-chown -R ${USERNAME}:${GROUPNAME} "${TELEGRAM_WORK_DIR}"
+chown -R ${USERNAME}:${GROUPNAME} "${TELEGRAM_WORK_DIR}" "${TELEGRAM_TEMP_DIR}"
 
 if [ -n "$1" ]; then
   exec "$@"
