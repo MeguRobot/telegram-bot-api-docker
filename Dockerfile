@@ -1,4 +1,4 @@
-FROM alpine:3.18 as build
+FROM alpine:latest as build
 
 ENV CXXFLAGS=""
 WORKDIR /usr/src/telegram-bot-api
@@ -12,7 +12,7 @@ RUN mkdir -p build \
  && strip /usr/src/telegram-bot-api/bin/telegram-bot-api
 
 
-FROM alpine:3.18
+FROM alpine:latest
 
 ENV TELEGRAM_WORK_DIR="/var/lib/telegram-bot-api" \
     TELEGRAM_TEMP_DIR="/tmp/telegram-bot-api"
