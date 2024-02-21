@@ -10,7 +10,7 @@ Make sure you have Docker and Compose installed on your system before following 
 ### Setup Steps
 1. **Create a telegram-bot-api volume:**
     ```sh
-    docker volume create --name telegram-bot-api --driver 
+    docker volume create --name telegram-bot-api
     ```
 2. **Run the container using Docker Compose:**
 
@@ -35,9 +35,10 @@ Make sure you have Docker and Compose installed on your system before following 
          TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
          TELEGRAM_LOG_FILE: /var/log/telegram-bot-api.log
          TELEGRAM_STAT: true
+         TELEGRAM_LOCAL:true
          TELEGRAM_VERBOSITY: 1
        volumes:
-         - telegram-bot-api-data:/var/lib/telegram-bot-api
+         - telegram-bot-api:/var/lib/telegram-bot-api
     
     volumes:
       telegram-bot-api:
@@ -59,6 +60,7 @@ Make sure you have Docker and Compose installed on your system before following 
 - `STAT_PORT`: (Optional) HTTP stats port (default: 8082)
 - `TELEGRAM_LOG_FILE`: (Optional) Path to the Telegram Bot API log file
 - `TELEGRAM_STAT`: (Optional) Enable HTTP stats (true/false)
+- `TELEGRAM_LOCAL`: (Optinal) Enable local data storage (true/false)
 - `TELEGRAM_FILTER`: (Optional) Filter for Telegram Bot API updates
 - `TELEGRAM_MAX_WEBHOOK_CONNECTIONS`: (Optional) Maximum number of webhook connections
 - `TELEGRAM_VERBOSITY`: (Optional) Verbosity level of the Telegram Bot API logs
