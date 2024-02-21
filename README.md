@@ -35,7 +35,7 @@ Make sure you have Docker and Compose installed on your system before following 
          TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
          TELEGRAM_LOG_FILE: /var/log/telegram-bot-api.log
          TELEGRAM_STAT: true
-         TELEGRAM_LOCAL:true
+         TELEGRAM_LOCAL: true
          TELEGRAM_VERBOSITY: 1
        volumes:
          - telegram-bot-api:/var/lib/telegram-bot-api
