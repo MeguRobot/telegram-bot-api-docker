@@ -60,7 +60,7 @@ Make sure you have Docker and Compose installed on your system before following 
 - `STAT_PORT`: (Optional) HTTP stats port (default: 8082)
 - `TELEGRAM_LOG_FILE`: (Optional) Path to the Telegram Bot API log file
 - `TELEGRAM_STAT`: (Optional) Enable HTTP stats (true/false)
-- `TELEGRAM_LOCAL`: (Optinal) Enable local data storage (true/false)
+- `TELEGRAM_LOCAL`: (Optional) Enable local data storage (true/false)
 - `TELEGRAM_FILTER`: (Optional) Filter for Telegram Bot API updates
 - `TELEGRAM_MAX_WEBHOOK_CONNECTIONS`: (Optional) Maximum number of webhook connections
 - `TELEGRAM_VERBOSITY`: (Optional) Verbosity level of the Telegram Bot API logs
