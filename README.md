@@ -1,6 +1,6 @@
 # telegram-bot-api-docker
 
-This repository provides a Docker image for running a Telegram bot API on latest Alpine Linux 3.18.
+This repository provides a Docker image for running a Telegram bot API on latest Alpine Linux.
 
 ## Setup
 
@@ -17,33 +17,36 @@ Make sure you have Docker and Compose installed on your system before following 
    Create a `docker-compose.yml` file with the following content:
 
    ```yaml
-   version: "3.9"
-   
-   services:
-     telegram-bot-api:
-       container_name: telegram-bot-api
-       image: megurobot/telegram-bot-api:latest
-       ports:
-         - "8081:8081"
-         - "8082:8082"
-       environment:
-         USER_UID: 101
-         USER_GID: 101
-         HTTP_PORT: 8081
-         STAT_PORT: 8082
-         TELEGRAM_API_ID: 12345
-         TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
-         TELEGRAM_LOG_FILE: /var/log/telegram-bot-api.log
-         TELEGRAM_STAT: true
-         TELEGRAM_LOCAL: true
-         TELEGRAM_VERBOSITY: 1
-       volumes:
-         - telegram-bot-api:/var/lib/telegram-bot-api
-    
+    services:
+      telegram-bot-api:
+        container_name: telegram-bot-api
+        image: megurobot/telegram-bot-api:latest
+        restart: unless-stopped
+        environment:
+          # "Rootless" mode with multiple containers or bind mount
+          USER_GID: 1000
+          USER_UID: 1000
+          # Telegram client data
+          TELEGRAM_API_ID: 123456
+          TELEGRAM_API_HASH: abcdefghijklmnopqrstuvwyz123456789
+          TELEGRAM_STAT: true
+          TELEGRAM_LOCAL: true
+        volumes:
+          - telegram-bot-api:/var/lib/telegram-bot-api
+        networks:
+          telegram-bot-api:
+        expose:
+          - 8081:8081
+          - 8082:8082
+
     volumes:
       telegram-bot-api:
         name: telegram-bot-api
         external: true
+
+    networks:
+      telegram-bot-api:
+        name: telegram-bot-api
    ```
    Adjust the port mappings and environment variables as needed.
 
